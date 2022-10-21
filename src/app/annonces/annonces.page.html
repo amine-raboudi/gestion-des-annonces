@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-inline" style="display: flex; flex-flow: row wrap">
+    <ion-title>Annonces</ion-title>
+  </ion-toolbar></ion-header
+>
+<ion-content style="margin: auto">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="2" class="container">
+        <h3>List des annonces:</h3>
+        <ion-list lines="full" display="flex-row" style="margin: 0 !important">
+          <ion-item
+            class="ion-text-justify"
+            button
+            *ngFor="let annonce of listAnnonces"
+            style="width: 100% !important"
+            ><div
+              [routerLink]="['/annonces/annonce-details/', annonce.id]"
+              class="ion-activatable ripple-parent rectangle"
+            >
+              <ion-card mar>
+                <div class="wrapper">
+                  <ion-avatar>
+                    <img
+                      alt="Silhouette of a person's head"
+                      src="https://i.pravatar.cc/300"
+                    />
+                  </ion-avatar>
+                  <ion-label style="font-size: 180%">
+                    {{annonce.createdBy}}</ion-label
+                  >
+                </div>
+
+                <ion-img alt="annonce" [src]="annonce.imageUrl"></ion-img>
+                <ion-card-header>
+                  <ion-card-title>{{annonce.title}}</ion-card-title>
+                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                </ion-card-header>
+
+                <ion-card-content> {{annonce.description}} </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
