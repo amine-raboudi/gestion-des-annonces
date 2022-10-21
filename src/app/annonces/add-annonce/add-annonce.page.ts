@@ -9,19 +9,25 @@ import { AnnoncesService } from 'src/app/annonces.service';
 })
 export class AddAnnoncePage implements OnInit {
   annonce: any;
+  userEmail: string;
   constructor(
     private annoncesService: AnnoncesService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userEmail = window.localStorage.getItem('email');
+  }
   addAnnonce(formValue: any) {
     //get Storage User.username
-    this.annonce = { createdBy: 'Ahdy K', ...formValue };
+
+    this.annonce = { createdBy: this.userEmail, ...formValue };
     return this.annoncesService.addAnnonce(this.annonce).subscribe({
       next: (data) => {
         console.log('data', data);
-        this.router.navigate(['/annonces']);
+        this.router.navigate(['annonces']).then(() => {
+          window.location.reload();
+        });
       },
       error: (error) => {
         console.log('error', error);
