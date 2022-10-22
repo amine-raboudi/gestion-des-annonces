@@ -4,13 +4,15 @@
       ><ion-back-button
         name="arrow-back-outline"
         defaultHref="/annonces"
-        class="ion-margin"
       ></ion-back-button>
     </ion-buttons>
     <ion-title class="d-inline-flex p-2 bd-highlight">
       Annonce Details</ion-title
     >
-    <ion-button slot="end" (click)="deleteAnnonce()"
+    <ion-button
+      *ngIf="userEmail==annonce.createdBy"
+      slot="end"
+      (click)="deleteAnnonce()"
       ><ion-icon name="trash-outline"></ion-icon
     ></ion-button>
   </ion-toolbar>

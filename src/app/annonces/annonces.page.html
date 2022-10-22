@@ -9,35 +9,112 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
+  <!--ION SEGMENT-->
+  <ion-toolbar>
+    <ion-segment
+      (ionChange)="segmentChanged($event)"
+      [(ngModel)]="segment"
+      color="primary"
+    >
+      <ion-segment-button value="0">
+        <ion-label>Home</ion-label>
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <ion-label>My annonces</ion-label>
+        <ion-icon name="documents-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Profile</ion-label>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <!--ION SEGMENT-->
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
+    <ion-slide>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="container">
+            <ion-list
+              lines="full"
+              display="flex-row"
+              style="margin: 0 !important"
+            >
+              <ion-item
+                class="ion-text-justify"
+                button
+                *ngFor="let annonce of listAnnonces"
+                style="width: 100% !important"
+              >
+                <ion-card
+                  [routerLink]="['/annonces/annonce-details/', annonce.id]"
+                >
+                  <img alt="Silhouette of mountains" [src]="annonce.imageUrl" />
+                  <ion-card-header>
+                    <div class="wrapper">
+                      <ion-avatar>
+                        <img
+                          alt="Silhouette of a person's head"
+                          src="https://i.pravatar.cc/300"
+                        />
+                      </ion-avatar>
+                      <h4 style="margin-left: 10%">{{annonce.createdBy}}</h4>
+                    </div>
 
+                    <ion-card-title>{{annonce.title}}</ion-card-title>
+                  </ion-card-header>
 
-      <ion-col size="12" class="container">
-        <ion-list lines="full" display="flex-row" style="margin: 0 !important">
-          <ion-item class="ion-text-justify" button *ngFor="let annonce of listAnnonces" style="width: 100% !important">
-            <ion-card [routerLink]="['/annonces/annonce-details/', annonce.id]">
-              <img alt="Silhouette of mountains" [src]="annonce.imageUrl" />
-              <ion-card-header>
-                <div class="wrapper">
+                  <ion-card-content> {{annonce.description}} </ion-card-content>
+                </ion-card>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid></ion-slide
+    >
+    <!--Second slide my annonces-->
+    <ion-slide
+      ><ion-grid>
+        <ion-row>
+          <ion-col size="12" class="container">
+            <ion-list
+              lines="full"
+              display="flex-row"
+              style="margin: 0 !important"
+            >
+              <ion-item
+                class="ion-text-justify"
+                button
+                *ngFor="let annonce of listAnnonces"
+                style="width: 100% !important"
+              >
+                <ion-card
+                  *ngIf="annonce.createdBy == userEmail"
+                  [routerLink]="['/annonces/annonce-details/', annonce.id]"
+                >
+                  <img alt="Silhouette of mountains" [src]="annonce.imageUrl" />
+                  <ion-card-header>
+                    <div class="wrapper">
+                      <ion-avatar>
+                        <img
+                          alt="Silhouette of a person's head"
+                          src="https://i.pravatar.cc/300"
+                        />
+                      </ion-avatar>
+                      <h4 style="margin-left: 10%">{{annonce.createdBy}}</h4>
+                    </div>
 
-                  <ion-avatar>
-                    <img alt="Silhouette of a person's head" src="https://i.pravatar.cc/300" />
-                  </ion-avatar>
-                  <h4 style="margin-left:10%;">{{annonce.createdBy}}</h4>
-                </div>
+                    <ion-card-title>{{annonce.title}}</ion-card-title>
+                  </ion-card-header>
 
-                <ion-card-title>{{annonce.title}}</ion-card-title>
-              </ion-card-header>
-
-              <ion-card-content>
-                {{annonce.description}}
-              </ion-card-content>
-            </ion-card>
-
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+                  <ion-card-content> {{annonce.description}} </ion-card-content>
+                </ion-card>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid></ion-slide
+    >
+  </ion-slides>
 </ion-content>

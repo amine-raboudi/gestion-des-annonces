@@ -9,6 +9,7 @@ import { AnnoncesService } from 'src/app/annonces.service';
 export class AnnonceDetailsPage implements OnInit {
   id: any;
   annonce: any;
+  userEmail: string;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -16,6 +17,7 @@ export class AnnonceDetailsPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userEmail = localStorage.getItem('email');
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.annonce = this.annoncesService.getAnnonceById(this.id);
     this.annoncesService.getAnnonceById(this.id).subscribe({
