@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AnnoncesService } from '../annonces.service';
+import { AnnoncesService } from '../services/annonces.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'annonces.page.html',
@@ -12,6 +14,8 @@ export class AnnoncePage implements OnInit {
   listAnnonces = [];
   segment = 0;
   userEmail: string;
+  user :any;
+  
   async segmentChanged(ev: any) {
     await this.slider.slideTo(this.segment);
   }
@@ -31,6 +35,15 @@ export class AnnoncePage implements OnInit {
   }
   ngOnInit() {
     this.userEmail = window.localStorage.getItem('email');
+    this.userserv.getUser(this.userEmail).subscribe({
+
+      next :(data)=> {
+        this.user=data[Object.keys(data)[0]]
+        
+       
+  
+      }
+     })
     console.log('AnnoncePage ngOnInit');
     this.allAnnonces();
     console.log('AnnoncePage ngOnInit', this.listAnnonces);
@@ -39,10 +52,18 @@ export class AnnoncePage implements OnInit {
     console.log('ID/', id);
     this.router.navigate(['/annonce-details', id]);
   }
+  SignOut() {
+    return this.userserv.auth.signOut().then(() => {
+      
+      this.router.navigate(['/home'])
+    });
+  }
+
 
   constructor(
     private announceService: AnnoncesService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private userserv :AuthService
   ) {}
 }

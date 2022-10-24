@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-content {
+    --background: #3880ff;
+  }
+  
+    
+  .wave-container {
+    position: relative;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    overflow: hidden;
+
+    background: #ffffff;
+    
+    img {
+      margin-bottom: 2rem;
+    }
+  
+  }
+  
+  .wave-container > svg {
+    display: block;
+  }
+  .wave-container > h1 {
+      color: black;
+    }

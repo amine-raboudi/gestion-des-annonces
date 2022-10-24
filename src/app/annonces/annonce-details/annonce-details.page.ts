@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AnnoncesService } from 'src/app/annonces.service';
+import { AnnoncesService } from 'src/app/services/annonces.service';
 @Component({
   selector: 'app-annonce-details',
   templateUrl: './annonce-details.page.html',

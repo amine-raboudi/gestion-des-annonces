@@ -6,13 +6,26 @@
         defaultHref="/annonces"
       ></ion-back-button>
     </ion-buttons>
-    <ion-title>add Annonce</ion-title>
+    <ion-title>Add Annonce</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card class="ion-no-margin">
-    <ion-img src="assets/images/header1.png"></ion-img>
+
+<ion-content fullscreen="true" slot="fixed" >
+  <div class="wave-container">
+    <div class="ion-padding">
+      <h1>Bienvenue</h1>
+      <h4><i>Application de gestion des annonces</i></h4>
+    </div>
+   
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#3880ff" fill-opacity="1" d="M0,64L120,101.3C240,139,480,213,720,202.7C960,192,1200,96,1320,48L1440,0L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
+    </div>
+
+
+
+  <ion-card >
     <ion-card-content>
       <ion-row justify-content-center>
         <ion-col size="10" offset="1" class="container">
@@ -25,59 +38,54 @@
               <ion-item class="ion-margin-bottom">
                 <ion-input
                   placeholder="Title"
-                  class="form-control"
+                  
                   type="text"
                   name="title"
                   id="title"
                   ngModel
                   required
-                  class="form-control"
+                 
                 ></ion-input
               ></ion-item>
               <ion-item class="ion-margin-bottom">
                 <ion-input
                   placeholder="Image URL"
                   class="ion-margin-bottom"
-                  class="form-control"
+                  
                   type="text"
                   name="imageUrl"
                   id="imageUrl"
                   ngModel
                   required
-                  class="form-control"
+                  
                 ></ion-input
               ></ion-item>
               <ion-item class="ion-margin-bottom">
-                <ion-input
-                  placeholder="Category"
-                  class="ion-margin-bottom"
-                  class="form-control"
-                  type="text"
-                  name="category"
-                  id="category"
-                  ngModel
-                  required
-                  class="form-control"
-                ></ion-input
-              ></ion-item>
+                <ion-select placeholder="Select category" ngModel name="category">
+                  <ion-select-option value="Voiture">Voiture</ion-select-option>
+                  <ion-select-option value="Informatique">Informatique</ion-select-option>
+                 
+                </ion-select>
+              
+              </ion-item>
               <ion-item class="ion-margin-bottom">
                 <ion-input
                   placeholder="Description"
-                  class="form-control"
+                  
                   type="text"
                   name="description"
                   id="description"
                   ngModel
                   required
-                  class="form-control"
+                 
                 ></ion-input
               ></ion-item>
 
               <ion-button
                 type="submit"
-                expand="block"
-                color="dark"
-                class="ion-margin-bottom"
+                expand="full"
+                color="primary"
+               
               >
                 Add Annonce</ion-button
               >
@@ -87,4 +95,5 @@
       >
     </ion-card-content></ion-card
   >
+  
 </ion-content>
