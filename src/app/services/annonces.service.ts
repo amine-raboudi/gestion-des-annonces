@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AnnoncesService {
-  
+  // retourne tout les annonces
   getAllAnnonces(): Observable<any> {
-    //return this.annonces;
-    //this.httpClient.get('https://mydatabase-65630.firebaseio.com');
+    
     return this.httpClient.get(
       'https://gestion-des-annonces-default-rtdb.europe-west1.firebasedatabase.app/annonce.json'
     );
   }
+  // ajouter un annonce
   addAnnonce(annonce: any): Observable<any> {
     return this.httpClient.post(
       'https://gestion-des-annonces-default-rtdb.europe-west1.firebasedatabase.app/annonce.json',
@@ -28,7 +28,7 @@ export class AnnoncesService {
     );
   }
 
-
+  // retourne tout les annonces d'un utlisateur par son email
   getAnnonceByUId(Mail: any): Observable<any> {
 
     return this.httpClient.get(
@@ -45,7 +45,6 @@ export class AnnoncesService {
   }
   // Update annonce:
   updateAnnonce(annonce: any): Observable<any> {
-    //this.annonces.push(annonce);
     return this.httpClient.put(
       'https://gestion-des-annonces-default-rtdb.europe-west1.firebasedatabase.app/annonce/' +
         annonce.id +
