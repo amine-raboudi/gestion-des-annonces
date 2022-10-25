@@ -10,6 +10,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['annonces.page.scss'],
 })
 export class AnnoncePage implements OnInit {
+   // dans la page home on va utliser les segments et les slides pour afficher dans chaque slide
+  // des differents interfaces comme tout les annonces ou bien les annonces d'utlisateur connecté 
   @ViewChild('slides', { static: true }) slider: IonSlides;
   listAnnonces = [];
   segment = 0;
