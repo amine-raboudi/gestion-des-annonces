@@ -15,7 +15,8 @@ export class AnnonceDetailsPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private annoncesService: AnnoncesService
   ) {}
-
+//charger l'email a partir du local Storage pour utliser ulterieurement (afficher le boutton supprimer si l'utlisateur est le createur de annonce)
+  // recuperer l'id de l'annonce puis le charger a partir de firebase   
   ngOnInit() {
     this.userEmail = localStorage.getItem('email');
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -31,6 +32,7 @@ export class AnnonceDetailsPage implements OnInit {
     });
     console.log('AnnonceDetailsPage ngOnInit', this.annonce);
   }
+  // supprimer l'annonce
   deleteAnnonce() {
     this.annoncesService.deleteAnnonceById(this.id).subscribe({
       next: (data) => {
