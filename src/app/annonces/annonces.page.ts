@@ -15,7 +15,8 @@ export class AnnoncePage implements OnInit {
   segment = 0;
   userEmail: string;
   user :any;
-  
+  // cette methode va capturer le changement du segment
+  // pour changer le contenu
   async segmentChanged(ev: any) {
     await this.slider.slideTo(this.segment);
   }
