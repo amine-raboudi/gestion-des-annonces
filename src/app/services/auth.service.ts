@@ -10,13 +10,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  isAuthenticated() {
-    return this.auth.currentUser?true:false
-  }
 
- 
+  ngFireAuth: any;
 
-
+  // pour authentifier nos utlisateur on utliser AngularFireAuth
+  // puisqu'il contient plusieurs fonctions prédéfini
+  /**
+  * signInWithEmailAndPassword: Authentifier avec username et password : puis on ajoute email au localStorage pour utliser ulterieurement
+  * createUserWithEmailAndPassword: creer un utilisateur avec un mot de passe et email 
+   * c'est pour quoi on a ajouter la methode addProfile pour ajouter d'autre champs a l'utilisateur
+  */
   constructor(public auth: AngularFireAuth, private httpClient: HttpClient) { }
 
 
@@ -50,11 +53,4 @@ export class AuthService {
   }
 
 
-  getUser(mail):Observable<any>{
-
-    return this.httpClient.get('https://gestion-des-annonces-default-rtdb.europe-west1.firebasedatabase.app/users.json?orderBy="email"&equalTo="'+mail+'"')
-
-  }
-
-  
 }
