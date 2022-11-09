@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  getUser(UserMail: string) {
+    throw new Error('Method not implemented.');
+  }
 
   ngFireAuth: any;
 

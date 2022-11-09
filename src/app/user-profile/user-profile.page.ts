@@ -19,15 +19,7 @@ export class UserProfilePage implements OnInit {
 
   ngOnInit() {
    this.UserMail= window.localStorage.getItem('email');
-   this.userserv.getUser(this.UserMail).subscribe({
-
-    next :(data)=> {
-      this.user=data[Object.keys(data)[0]]
-      
-     
-
-    }
-   })
+   
 
    
    this.announceService.getAnnonceByUId(this.UserMail).subscribe({

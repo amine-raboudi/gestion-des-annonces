@@ -6,13 +6,13 @@ export const environment = {
   production: false,
 };
 export const firebaseConfig = {
-  apiKey: 'AIzaSyDKCMeQraPzgqcb9MIPUd8d8DrnVQID_Xc',
-  authDomain: 'gestion-des-annonces.firebaseapp.com',
-  projectId: 'gestion-des-annonces',
-  storageBucket: 'gestion-des-annonces.appspot.com',
-  messagingSenderId: '971603638490',
-  appId: '1:971603638490:web:be70a7c47499377fbdcde3',
-  measurementId: 'G-M92JX05G60',
+  apiKey: "AIzaSyAIttagP5b5RAW5cDpZKbe8_fBCRlMyYQA",
+  authDomain: "annonces-4ed96.firebaseapp.com",
+  projectId: "annonces-4ed96",
+  storageBucket: "annonces-4ed96.appspot.com",
+  messagingSenderId: "927137793230",
+  appId: "1:927137793230:web:9a387a1c38c759ddb63c9f",
+  measurementId: "G-J6NHS4M2CD"
 };
 /*
  * For easier debugging in development mode, you can import the following file

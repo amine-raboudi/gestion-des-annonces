@@ -38,15 +38,6 @@ export class AnnoncePage implements OnInit {
   }
   ngOnInit() {
     this.userEmail = window.localStorage.getItem('email');
-    this.userserv.getUser(this.userEmail).subscribe({
-
-      next :(data)=> {
-        this.user=data[Object.keys(data)[0]]
-        
-       
-  
-      }
-     })
     console.log('AnnoncePage ngOnInit');
     this.allAnnonces();
     console.log('AnnoncePage ngOnInit', this.listAnnonces);
